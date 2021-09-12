@@ -24,7 +24,7 @@ public class Uri2602Application implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		List<CustomerNameProjection> list = repository.search1("RS");
+		List<CustomerNameProjection> list = repository.search1("rs");
 
 		List<CustomerNameDTO> result1 = list.stream().map(CustomerNameDTO::new).collect(Collectors.toList());
 
