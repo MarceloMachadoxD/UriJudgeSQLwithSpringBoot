@@ -1,4 +1,6 @@
-package com.devsuperior.uri2621;
+package com.devsuperior.uri2621.DTO;
+
+import com.devsuperior.uri2621.ProductMinProjection;
 
 public class ProductMinDTO {
 

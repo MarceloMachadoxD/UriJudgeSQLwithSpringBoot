@@ -1,5 +1,6 @@
 package com.devsuperior.uri2621;
 
+import com.devsuperior.uri2621.DTO.ProductMinDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -32,6 +33,17 @@ public class Uri2621Application implements CommandLineRunner {
 		for (ProductMinDTO obj : result1) {
 			System.out.println(obj);
 		}
+
+
+
+		List<ProductMinDTO> result2 = repository.search2(10, 20, "P");
+
+		System.out.println("\n ****JPQL Result *****");
+
+		for (ProductMinDTO obj : result2) {
+			System.out.println(obj);
+		}
+
 
 
 	}
