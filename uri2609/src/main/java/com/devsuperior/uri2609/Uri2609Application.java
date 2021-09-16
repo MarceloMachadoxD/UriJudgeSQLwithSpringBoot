@@ -28,9 +28,19 @@ public class Uri2609Application implements CommandLineRunner {
 		List<CategorySumProjection> list = repository.Search1();
 		List<CategorySumDTO> result1 = list.stream().map(CategorySumDTO::new).collect(Collectors.toList());
 
+		System.out.println("********Native SQL ************");
 		for (CategorySumDTO obj: result1) {
 			System.out.println(obj);
 		}
+
+		List<CategorySumDTO> result2 = repository.Search2();
+
+		System.out.println("********JPQL ************");
+
+		for (CategorySumDTO obj: result2) {
+			System.out.println(obj);
+		}
+
 
 
 
