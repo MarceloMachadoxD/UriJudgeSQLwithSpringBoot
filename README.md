@@ -15,3 +15,6 @@ Solving some Uri Judge challenges with SpringBoot
 * 2737
   * SQL - Done
   * JPQL - Pending
+* 2990
+  * SQL - Pending
+  * JPQL - Pending
