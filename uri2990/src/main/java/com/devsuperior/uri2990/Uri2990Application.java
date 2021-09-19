@@ -15,25 +15,29 @@ import java.util.stream.Collectors;
 @SpringBootApplication
 public class Uri2990Application implements CommandLineRunner {
 
-	@Autowired
-	private EmpregadoRepository repository;
-	
-	public static void main(String[] args) {
-		SpringApplication.run(Uri2990Application.class, args);
-	}
+    @Autowired
+    private EmpregadoRepository repository;
 
-	@Override
-	public void run(String... args) throws Exception {
+    public static void main(String[] args) {
+        SpringApplication.run(Uri2990Application.class, args);
+    }
 
-		List<EmpregadoDeptProjection> list = repository.search1();
-		List<EmpregadoDeptDTO> result1 = list.stream().map(EmpregadoDeptDTO::new).collect(Collectors.toList());
+    @Override
+    public void run(String... args) throws Exception {
 
-		System.out.println("*****SQL RESULT******");
-		for (EmpregadoDeptDTO obj: result1) {
-			System.out.println(obj);
-		}
-	}
+        List<EmpregadoDeptProjection> list = repository.search1();
+        List<EmpregadoDeptDTO> result1 = list.stream().map(EmpregadoDeptDTO::new).collect(Collectors.toList());
 
+        System.out.println("*****SQL RESULT******");
+        for (EmpregadoDeptDTO obj : result1) {
+            System.out.println(obj);
+        }
 
+        System.out.println("*****JPQL RESULT******");
+        List<EmpregadoDeptDTO> result2 = repository.search2();
+        for (EmpregadoDeptDTO obj : result2) {
+            System.out.println(obj);
+        }
+    }
 
 }
