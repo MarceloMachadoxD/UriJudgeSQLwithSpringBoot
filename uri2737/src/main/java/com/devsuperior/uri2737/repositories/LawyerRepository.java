@@ -11,19 +11,20 @@ import java.util.List;
 
 public interface LawyerRepository extends JpaRepository<Lawyer, Long> {
 
-    @Query(nativeQuery = true, value =
-            "(SELECT name, customers_number " +
+    @Query(nativeQuery = true, value = "(" +
+            "SELECT name, customers_number AS customersNumber " +
             " FROM lawyers " +
-            " ORDER BY customers_number DESC " +
-            " LIMIT 1) " +
+            " WHERE customers_number = ( " +
+            "     SELECT MAX(customers_number ) " +
+            "     FROM lawyers) " +
             "UNION ALL " +
             "(SELECT name, customers_number " +
             " FROM lawyers " +
-            " ORDER BY  customers_number ASC " +
-            " LIMIT 1 ) " +
+            "WHERE customers_number = ( " +
+            "    SELECT MIN(customers_number) " +
+            "    FROM lawyers) ) " +
             "UNION ALL " +
-            "(SELECT 'Average', ROUND(AVG(customers_number),0) " +
-            " FROM lawyers)")
+            "(SELECT 'Average', ROUND(AVG(customers_number),0) FROM lawyers))" )
     List<LawyerMinProjection> search1();
 
 
